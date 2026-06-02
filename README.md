@@ -56,7 +56,21 @@ SimLauncher
 
 ## Installing
 
-Clone the repository and build the app bundle locally:
+Install from the Homebrew tap:
+
+```bash
+brew tap murilloarturo/simlauncher https://github.com/murilloarturo/sim_launcher
+brew install --HEAD murilloarturo/simlauncher/simlauncher
+open "$(brew --prefix murilloarturo/simlauncher/simlauncher)/SimLauncher.app"
+```
+
+The formula also installs a CLI entrypoint:
+
+```bash
+simlauncher help
+```
+
+Or clone the repository and build the app bundle locally:
 
 ```bash
 git clone git@github.com:murilloarturo/sim_launcher.git
@@ -186,6 +200,7 @@ Resources/Info.plist       macOS app metadata
 scripts/build_app.sh       SwiftPM app bundle helper
 scripts/simlauncherctl     Agent-friendly list and launch helper
 project.yml                XcodeGen project definition
+Formula/simlauncher.rb     Homebrew HEAD formula
 Assets/                    README and design assets
 ```
 

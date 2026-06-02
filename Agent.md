@@ -27,6 +27,7 @@ SimLauncher is a native macOS menu bar app for quickly launching local Apple sim
 ```bash
 swift test
 ./scripts/build_app.sh
+brew style Formula/simlauncher.rb
 ```
 
 Use XcodeGen for the app project:
@@ -34,6 +35,14 @@ Use XcodeGen for the app project:
 ```bash
 xcodegen generate
 open SimLauncher.xcodeproj
+```
+
+Homebrew install path:
+
+```bash
+brew tap murilloarturo/simlauncher https://github.com/murilloarturo/sim_launcher
+brew install --HEAD murilloarturo/simlauncher/simlauncher
+open "$(brew --prefix murilloarturo/simlauncher/simlauncher)/SimLauncher.app"
 ```
 
 ## Platform Commands
@@ -78,6 +87,7 @@ emulator -avd <AVD_NAME>
 - Keep changes small and consistent with the existing SwiftUI style.
 - Add parser or service tests when changing discovery behavior.
 - Keep `scripts/simlauncherctl` stable because skills and agents rely on it.
+- Keep `Formula/simlauncher.rb` HEAD-installable because it is the current Homebrew distribution path.
 - Do not shell out through `/bin/sh` when `Process` can execute the tool directly.
 - Keep command errors visible in the menu status text.
 - Avoid blocking work that could make the menu feel frozen if discovery or launch logic grows heavier.
