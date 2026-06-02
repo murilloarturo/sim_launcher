@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+APP_BINARY="$ROOT/dist/SimLauncher.app/Contents/MacOS/SimLauncher"
+
+if [[ -f "$ROOT/Package.swift" ]]; then
+  swift build --package-path "$ROOT" --product SimLauncher >/dev/null
+
+  SWIFT_BINARY="$(find "$ROOT/.build" -type f -path '*/debug/SimLauncher' -perm -111 -print | head -n 1)"
+
+  if [[ -x "$SWIFT_BINARY" ]]; then
+    exec "$SWIFT_BINARY" "$@"
+  fi
+fi
+
+if [[ -x "$APP_BINARY" ]]; then
+  exec "$APP_BINARY" "$@"
+fi
+
+echo "SimLauncher executable was not found. Build the app or run from the repository checkout." >&2
+exit 1
