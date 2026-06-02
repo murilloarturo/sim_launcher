@@ -7,7 +7,7 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 <p align="center">
-  <img src="Assets/simlauncher.png" alt="SimLauncher README banner" width="900">
+  <img src="Assets/simlauncher-banner.jpg" alt="SimLauncher README banner" width="900">
 </p>
 
 Native macOS menu bar launcher for iPhone, iPad, and Android simulators.
